@@ -1,0 +1,16 @@
+{
+  "name": "Habits Pro",
+  "short_name": "Habits",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F4F6F0",
+  "theme_color": "#4A5D23",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
