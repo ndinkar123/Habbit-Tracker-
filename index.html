@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Habits Pro</title>
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- Point 1: Biometric App Lock Overlay -->
+    <div id="app-lock" class="fullscreen-overlay">
+        <div class="lock-content">
+            <h2>Habits Pro</h2>
+            <p>Authentication Required</p>
+            <button id="btn-unlock" class="premium-btn">Unlock with Fingerprint</button>
+            <button id="btn-pin-fallback" class="text-btn">Use PIN</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <main id="app-content" class="hidden">
+        
+        <!-- Header & Point 10: Daily Slogan -->
+        <header>
+            <h1 class="date-display">Today</h1>
+            <p id="daily-slogan" class="premium-italic"></p>
+        </header>
+
+        <!-- Point 2: Premium Semi-Circle Progress Gauge -->
+        <section class="hero-gauge">
+            <svg viewBox="0 0 100 50" class="semi-circle">
+                <path d="M 10,50 A 40,40 0 0,1 90,50" class="gauge-bg" fill="none" stroke-width="8" stroke-linecap="round"/>
+                <path id="progress-path" d="M 10,50 A 40,40 0 0,1 90,50" class="gauge-fill" fill="none" stroke-width="8" stroke-linecap="round" stroke-dasharray="125" stroke-dashoffset="125"/>
+            </svg>
+            <div class="gauge-text">
+                <span id="overall-percentage">0%</span>
+                <small>Completed Today</small>
+            </div>
+        </section>
+
+        <!-- Point 2 & 3: Rectangular Habit Cards with SVG Icons -->
+        <section id="habits-list">
+            <!-- Example Habit Card -->
+            <div class="habit-card">
+                <div class="card-progress-fill" style="width: 80%;"></div>
+                <div class="card-content">
+                    <span class="premium-icon">📚</span>
+                    <span class="habit-name">DRDO CEPTAM Mock Test</span>
+                    <span class="habit-stats">4/5 Days</span>
+                </div>
+            </div>
+            <div class="habit-card">
+                <div class="card-progress-fill" style="width: 45%;"></div>
+                <div class="card-content">
+                    <span class="premium-icon">🏍️</span>
+                    <span class="habit-name">Service Honda CB Shine</span>
+                    <span class="habit-stats">45%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Point 6: Calendar Tab & Expandable BMI Card -->
+        <section id="calendar-tab" class="hidden">
+            <div class="accordion-card" id="bmi-accordion">
+                <div class="accordion-header">
+                    <h3>Biometric Health: Calculate BMI</h3>
+                    <span class="icon-expand">▼</span>
+                </div>
+                <div class="accordion-body hidden">
+                    <!-- Tactile Sliders for Height & Weight go here -->
+                    <input type="range" min="100" max="220" id="height-slider">
+                    <input type="range" min="40" max="150" id="weight-slider">
+                    <div id="bmi-gauge-result" class="gradient-track"></div>
+                    <p class="scientific-text">The Body Mass Index (BMI) is a rapid biometric tool that uses the ratio of your height to your weight to estimate your overall body mass...</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Point 4: Floating Action Button for To-Do -->
+    <button id="fab-todo" class="fab hidden">+</button>
+
+    <!-- Point 4: Quick-Capture Bottom Sheet -->
+    <div id="todo-sheet" class="bottom-sheet hidden">
+        <div class="sheet-handle"></div>
+        <h3>Quick Task</h3>
+        <input type="text" id="todo-input" placeholder="e.g., Organize gift registry document...">
+        <button id="save-todo" class="premium-btn">Save</button>
+    </div>
+
+    <!-- JS Modules -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
