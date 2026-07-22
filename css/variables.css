@@ -1,0 +1,15 @@
+:root {
+    /* Premium Olive Green Theme */
+    --primary-olive: #556b2f;
+    --primary-olive-light: #7b8e4f;
+    --bg-cream: #f9f9f6;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e20;
+    --text-muted: #8b997b;
+    
+    /* BMI Gradient Track */
+    --bmi-underweight: #4facfe;
+    --bmi-normal: #43e97b;
+    --bmi-overweight: #f6d365;
+    --bmi-obese: #ff0844;
+}

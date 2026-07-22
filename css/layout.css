@@ -1,0 +1,27 @@
+/* POINT 8: Completely block web-browser gestures (Pull-to-refresh & Edge Swipes) */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    font-family: 'Helvetica Neue', sans-serif;
+    overflow: hidden; /* Prevents bouncing */
+    overscroll-behavior-y: none; /* Kills pull-to-refresh */
+    overscroll-behavior-x: none; /* Kills swipe-to-go-back */
+    -webkit-tap-highlight-color: transparent; /* Removes blue tap flash on mobile */
+}
+
+.fullscreen-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(249, 249, 246, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.hidden { display: none !important; }
