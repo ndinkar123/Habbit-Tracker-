@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Habits Pro">
+<meta name="theme-color" content="#4A5D23">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'self';">
+<title>Habit Tracker Pro</title>
+
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="installBanner" class="install-banner">
+  <div class="install-info">
+    <div class="app-logo install-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7A9B42"/><stop offset="100%" stop-color="#3E4F1B"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#g)"/><g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"><line x1="50" y1="18" x2="50" y2="82" /><line x1="18" y1="50" x2="82" y2="50" /><line x1="27.38" y1="27.38" x2="72.62" y2="72.62" /><line x1="27.38" y1="72.62" x2="72.62" y2="27.38" /><line x1="20.44" y1="37.76" x2="79.56" y2="62.24" /><line x1="20.44" y1="62.24" x2="79.56" y2="37.76" /><line x1="37.76" y1="20.44" x2="62.24" y2="79.56" /><line x1="62.24" y1="20.44" x2="37.76" y2="79.56" /></g><circle cx="50" cy="50" r="18" fill="#FFFFFF"/></svg>
+    </div>
+    <div class="install-text">
+      <h4>Install Habits Pro</h4>
+      <p>Tap <strong>Install</strong> to add this app directly to your home screen.</p>
+    </div>
+  </div>
+  <div class="install-actions">
+    <button class="install-action-btn" id="installActionBtn" type="button">Install</button>
+    <button class="install-close" id="installCloseBtn" type="button">✕</button>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="app-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7A9B42"/>
+            <stop offset="100%" stop-color="#3E4F1B"/>
+          </linearGradient>
+        </defs>
+        <rect width="100" height="100" rx="24" fill="url(#g2)"/>
+        <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round">
+          <line x1="50" y1="18" x2="50" y2="82" />
+          <line x1="18" y1="50" x2="82" y2="50" />
+          <line x1="27.38" y1="27.38" x2="72.62" y2="72.62" />
+          <line x1="27.38" y1="72.62" x2="72.62" y2="27.38" />
+          <line x1="20.44" y1="37.76" x2="79.56" y2="62.24" />
+          <line x1="20.44" y1="62.24" x2="79.56" y2="37.76" />
+          <line x1="37.76" y1="20.44" x2="62.24" y2="79.56" />
+          <line x1="62.24" y1="20.44" x2="37.76" y2="79.56" />
+        </g>
+        <circle cx="50" cy="50" r="18" fill="#FFFFFF"/>
+      </svg>
+    </div>
+    <div class="topbar-title"><span>Habits</span>Pro</div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn btn-badge" id="btnBadge" type="button" title="Achievements">
+      <svg viewBox="0 0 24 24" style="stroke: #FFF; fill: none; stroke-width: 2;"><path d="M8 21h8M12 17v4M7 4h10c1.656 0 3 1.343 3 3v2c0 2.209-1.791 4-4 4h-1.5a5.502 5.502 0 0 1-5 0H8c-2.209 0-4-1.791-4-4V7c0-1.657 1.344-3 3-3z"></path></svg>
+    </button>
+    <button class="icon-btn btn-export" id="btnExport" type="button" title="Export Data">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+    </button>
+  </div>
+</div>
+
+<div class="month-nav" id="monthNav"></div>
+
+<div class="main">
+  <div class="view active" id="view-today">
+
+    <div class="slogan-banner" id="sloganBanner">
+      <div class="slogan-icon">✨</div>
+      <div class="slogan-text" id="sloganText"></div>
+    </div>
+
+    <div class="hero-banner">
+      <div>
+        <div class="hero-date" id="heroDate"></div>
+        <div class="hero-title" id="heroTitle"></div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-streak-num" id="heroStreak">0</div>
+        <div class="hero-streak-lbl">Day Streak</div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div class="stat-info">
+          <div class="stat-val" id="statCompleted">0/0</div>
+          <div class="stat-lbl">Completed Today</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-info">
+          <div class="stat-val" id="statRate">0%</div>
+          <div class="stat-lbl">Month Average</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Your Habits</h2>
+    <div class="habit-list" id="habitList"></div>
+
+    <h2>Daily Journal</h2>
+    <div class="note-box">
+      <textarea class="note-input" id="dailyNoteInput" maxlength="4000" placeholder="How did you feel today? Any reflections?"></textarea>
+    </div>
+  </div>
+
+  <div class="view" id="view-calendar">
+    <div class="panel">
+      <h2 style="margin:0 0 24px 0;">Weekly Performance</h2>
+      <div class="chart-container" id="weeklyChart"></div>
+
+      <h2 style="margin:0 0 20px 0;">Activity Heatmap</h2>
+      <div class="cal-header">
+        <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div id="calSelectedNote" style="margin-top: 24px; font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.5;"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-progress">
+    <h2>Advanced Analytics</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background:none;">🔥</div>
+        <div class="stat-info">
+          <div class="stat-val" style="color:var(--primary);" id="anaBestStreak">0</div>
+          <div class="stat-lbl">Best Streak</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-info" style="width:100%;">
+          <div class="stat-lbl" style="margin-bottom:6px;">14-Day Trend</div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+             <div class="stat-val" style="color:var(--primary);" id="anaConsistency">0%</div>
+             <div class="trend-badge" id="anaTrend">--</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Habit Performance (This Month)</h2>
+    <div class="donut-grid" id="donutGrid"></div>
+  </div>
+
+  <div class="view" id="view-settings">
+    <h2>Manage Habits</h2>
+    <div id="editHabitList"></div>
+    <button class="add-btn" id="addHabitBtn" type="button">+ Create New Habit</button>
+
+    <h2>Rewards Pool (Mystery Box)</h2>
+    <div class="settings-list" style="padding: 20px;">
+      <div class="reward-add-row">
+        <input type="text" id="newRewardInput" class="habit-edit-input" maxlength="120" placeholder="Add a personal reward...">
+        <button class="btn btn-primary" id="addRewardBtn" type="button" style="background:var(--primary); color:#FFF; padding:0 24px; border:none; border-radius:12px; font-weight:bold;">Add</button>
+      </div>
+      <div id="rewardsList" style="display:flex; flex-direction:column; gap:12px;"></div>
+    </div>
+
+    <h2>Preferences</h2>
+    <div class="settings-list">
+      <div class="settings-row">
+        <div class="settings-label">Dark Mode</div>
+        <label class="toggle">
+          <input type="checkbox" id="darkToggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <h2>Data Management</h2>
+    <div class="settings-list">
+      <div class="settings-row">
+        <div class="settings-label">Import Backup (JSON)</div>
+        <button class="btn" id="importBtn" type="button" style="background:var(--bg);">Import</button>
+        <input type="file" id="importFile" accept=".json" style="display:none">
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Reset All Data</div>
+        <button class="btn btn-danger" id="resetBtn" type="button">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-bar" id="tabBar">
+  <button class="tab active" type="button" data-tab="today">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    Today
+  </button>
+  <button class="tab" type="button" data-tab="calendar">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    Calendar
+  </button>
+  <button class="tab" type="button" data-tab="progress">
+    <svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+    Progress
+  </button>
+  <button class="tab" type="button" data-tab="settings">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    Settings
+  </button>
+</div>
+
+<div class="modal-overlay" id="achievementsModal">
+  <button class="achieve-close" id="achieveClose" type="button">✕</button>
+  <div class="achieve-modal">
+    <div class="achieve-header">
+      <div class="level-icon" id="lvlIcon">🏆</div>
+      <div class="level-title" id="lvlTitle">Gold Tier</div>
+      <div class="level-sub" id="lvlSub">0 Total Habits Completed</div>
+    </div>
+    <div class="achieve-body">
+      <h2 style="margin-top:0;">Your Badges</h2>
+      <div class="badge-grid" id="badgeGrid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="congratsPopup">
+  <div class="popup-box">
+    <div class="popup-icon">🎁</div>
+    <div class="popup-title">Perfect Day!</div>
+    <div class="popup-sub">You crushed all your habits today. Here is your mystery reward:</div>
+    <div class="popup-reward-box">
+      <div class="popup-reward-lbl">You Earned</div>
+      <div class="popup-reward-txt" id="popupRewardTxt">Loading...</div>
+    </div>
+    <button class="btn-primary" id="popupClaimBtn" type="button">Claim Reward 🎉</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="emojiOverlay" style="z-index: 9999;"></div>
+<div class="emoji-picker" id="emojiPicker">
+  <h2 style="margin-top:0;">Select Icon</h2>
+  <div class="emoji-grid" id="emojiGrid"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="update-banner" id="updateBanner">
+  <span>A new version is ready.</span>
+  <button id="updateRefreshBtn" type="button">Refresh</button>
+</div>
+
+<script src="./storage.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
